@@ -7,12 +7,16 @@ let c = 0
 
 btn.addEventListener("click", run)
 
+function sum(a, b) {
+    return (a + b)  
+}
+
 function division (x,y){
     c = 0
     testValue = multiplication(y,n)
-    n = n + 1
+    n = sum(n,1)
     if (testValue>x){
-        return (n-2)
+        return (sum(n,-2))
     }
     else {
         return division (x,y)
@@ -24,8 +28,8 @@ function multiplication(a,b) {
         return c
     }
     else {
-        c = c + a
-        return multiplication(a,b-1)
+        c = sum(c,a)
+        return multiplication(a,sum(b,-1))
     }
 }
 

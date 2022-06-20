@@ -2,19 +2,23 @@ const btn = document.querySelector ("#submit")
 const result = document.querySelector ("h3")
 let c = 0
 
-btn.addEventListener("click", multiplication)
+btn.addEventListener("click", run)
 
 function sum(a, b) {
+    return (a + b)  
+}
+
+function multiplication(a, b) {
     if (b<=0) {
         return c
-    }
+    }   
     else {
-        c = c + a
-        return sum(a,b-1)
+        c = sum (c,a)
+        return multiplication(a,sum(b,-1))
     }
 }
 
-function multiplication() {
+function run() {
     const num1 = Number(document.querySelector("#num1").value)
     const num2 = Number(document.querySelector("#num2").value)
     const checkInt1 = Number.isInteger(num1)
@@ -24,7 +28,7 @@ function multiplication() {
         if (!checkInt1 || !checkInt2 || num1 == '' || num2 == '' || num1<0 || num2<0) {
             throw `[multiply] Impossible to multiply ${num1} * ${num2}`
         }
-        const ans = sum(num1, num2)
+        const ans = multiplication(num1, num2)
         result.textContent = `O resultado é ${ans}.` 
         result.style.color = "#00ff00"
         result.style.backgroundColor = "#000000"
